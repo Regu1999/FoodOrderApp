@@ -29,7 +29,7 @@ export default function PopUpCard({ children }) {
 
             <form method="dialog" className="modal-actions">
                 <button className="text-button" onClick={() => setIsModel(false)}>Close</button>
-                <button className="button" type="button">Go to Checkout</button>
+                {!total==0&&<button className="button" type="button">Go to Checkout</button>}
             </form>
 
         </CartTotalCtx.Provider>

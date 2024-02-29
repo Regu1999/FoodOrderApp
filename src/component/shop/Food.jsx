@@ -27,7 +27,7 @@ export default function Food({ meal }) {
             <p className="meal-item-description">
                 {description}
             </p>
-            <div className="meal-item-actions"><Button onClick={()=>addCartData({type:'increment', dispatch:{id,qty:1}})}>Add to Cart</Button></div>
+            <div className="meal-item-actions"><Button onClick={()=>addCartData({type:'increment', dispatch:{id,price,qty:1}})}>Add to Cart</Button></div>
         </article>
     </div>
 }

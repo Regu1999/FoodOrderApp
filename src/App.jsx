@@ -11,7 +11,7 @@ function App() {
   const [meals, setMeals] = useState([]);
   const [cart, cartDispatch] = useReducer(cartReducer, [])
   const [isModel, setIsModel] = useState(false);
-  console.log(cart);
+  // console.log(cart);
   useEffect(() => {
     async function fetchedData() {
       const mealsData = await getMealsData();

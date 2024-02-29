@@ -1,12 +1,15 @@
 import CartList from "./CartList"
 import { MealsContext, CartTotalCtx } from "../store/mealContext"
-import { useContext } from "react"
-import {somePriceWithQty} from "../../handlePrice.js"
+import { useContext, useEffect } from "react"
+import { somePriceWithQty } from "../../handlePrice.js"
 export default function Cart() {
     const { mealsCart } = useContext(MealsContext);
     const { total, setTotal } = useContext(CartTotalCtx);
-    
-    somePriceWithQty()
+    const totalVal = somePriceWithQty(mealsCart)
+
+    useEffect(()=>{
+        setTotal(totalVal)
+    },[mealsCart])
     return <div className="cart">
         <h2>Your cart</h2>
         {mealsCart.length > 0 ? <div>
