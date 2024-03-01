@@ -1,29 +1,17 @@
 import Button from "../UI/Button"
 import { useContext } from "react";
 import { MealsContext } from "../store/mealContext";
+import { numerToPriceConverter } from "../../handlePrice";
 export default function Food({ meal }) {
     const { id, name, price, description, image } = meal;
     const { addCartData} = useContext(MealsContext);
+    const convetedPrice=numerToPriceConverter(price);
     // console.log("hi");
-    // function handleCartData() {
-    //     // const isexistVal=isExist();
-    //     const isExist = mealsCart.indexOf((meal) => {
-    //         console.log(meal);
-    //         return meal.id == id
-    //     })
-    //     console.log(mealsCart);
-    //     if (isExist == -1) {
-    //         setCart(prevCart => {
-    //             return [...prevCart, { id, qty: 1 }]
-    //         })
-    //     }
-    //     // console.log(isExist);
-    // }
     return <div className="meal-item">
         <article>
             <img src={`http://localhost:3000/${image}`} alt={name} />
             <h3>{name}</h3>
-            <div><span className="meal-item-price">${price}</span></div>
+            <div><span className="meal-item-price">{convetedPrice}</span></div>
             <p className="meal-item-description">
                 {description}
             </p>

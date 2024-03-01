@@ -1,12 +1,12 @@
 import CartList from "./CartList"
 import { MealsContext, CartTotalCtx } from "../store/mealContext"
 import { useContext, useEffect } from "react"
-import { somePriceWithQty } from "../../handlePrice.js"
+import { somePriceWithQty,numerToPriceConverter } from "../../handlePrice.js"
 export default function Cart() {
     const { mealsCart } = useContext(MealsContext);
     const { total, setTotal } = useContext(CartTotalCtx);
     const totalVal = somePriceWithQty(mealsCart)
-
+    const convetedPrice=numerToPriceConverter(total);
     useEffect(()=>{
         setTotal(totalVal)
     },[mealsCart])
@@ -18,7 +18,7 @@ export default function Cart() {
                     return <CartList key={cartdata.id} cartdata={cartdata} />
                 })}
             </ul>
-            <div className="cart-total">${total}</div>
+            <div className="cart-total">{convetedPrice}</div>
         </div> : <h3>Your Cart is Empty...</h3>}
     </div>
 }

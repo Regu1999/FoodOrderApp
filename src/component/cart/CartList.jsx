@@ -1,18 +1,19 @@
 import { useContext } from "react";
 import { MealsContext } from "../store/mealContext";
-export default function CartList({cartdata}) {
+import { numerToPriceConverter } from "../../handlePrice";
+export default function CartList({ cartdata }) {
     console.log("CartList");
-    const {mealsInfo,addCartData}=useContext(MealsContext)
-    const {id,qty}=cartdata
-    // let itemQty = qty;
-    const cartProduct=mealsInfo.filter((meal)=>meal.id==id);
+    const { mealsInfo, addCartData } = useContext(MealsContext);
+    const { id, qty } = cartdata;
+    const cartProduct = mealsInfo.filter((meal) => meal.id == id);
+    const convetedPrice = numerToPriceConverter(cartProduct[0].price);
 
     // console.log(cartProduct);
-    return <li className="cart-item"><span>{cartProduct[0].name} - {qty} x ${cartProduct[0].price}</span>
+    return <li className="cart-item"><span>{cartProduct[0].name} - {qty} x {convetedPrice}</span>
         <span className="cart-item-actions">
-            <button onClick={()=>1 < qty && addCartData({type:'decrement', dispatch:{id,qty:1}})}>-</button>
+            <button onClick={() => 1 < qty && addCartData({ type: 'decrement', dispatch: { id, qty: 1 } })}>-</button>
             {qty}
-            <button onClick={()=>addCartData({type:'increment', dispatch:{id,qty:1}})}>+</button>
+            <button onClick={() => addCartData({ type: 'increment', dispatch: { id, qty: 1 } })}>+</button>
         </span>
     </li>
 }

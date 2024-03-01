@@ -119,6 +119,7 @@ h1 {
 
 .modal-actions {
   display: flex;
+  align-items: center;
   justify-content: flex-end;
   gap: 1rem;
 }
@@ -196,6 +197,7 @@ h1 {
   padding: 0.5rem;
   border-radius: 4px;
   border: 1px solid #ccc;
+  outline: none;
 }
 
 .control-row {
@@ -259,4 +261,11 @@ h1 {
     opacity: 1;
     transform: translateY(0);
   }
+}
+.error{
+  /* border-color:rgb(252, 73, 73); */
+  color: rgb(252, 73, 73);
+}
+.sucess{
+color: rgb(3, 80, 3);
 }
