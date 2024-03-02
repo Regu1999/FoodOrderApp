@@ -30,7 +30,7 @@ export default function PopUpCard({ children, handleCheckOut,setPopUp}) {
 
             <div className="modal-actions">
                 <form method="dialog" >
-                    <button className="text-button" onClick={() => setIsModel(false)}>Close</button>
+                    <button className={`${total==0?"button":"text-button"}`} onClick={() => setIsModel(false)}>Close</button>
                 </form>
                 {!total == 0 && <button className="button" type="button" onClick={handleCheckOut}>Go to Checkout</button>}
             </div>

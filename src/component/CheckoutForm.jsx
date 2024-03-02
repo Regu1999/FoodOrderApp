@@ -9,7 +9,7 @@ const CheckoutForm = forwardRef(function ({ }, ref) {
         e.preventDefault();
     }
     const convetedPrice = numerToPriceConverter(total);
-    return <form action="" className="" onSubmit={handleSubmit} ref={ref}>
+    return <form onSubmit={handleSubmit} ref={ref}>
         <h2>Checkout</h2>
         <p>Total Amount : {convetedPrice}</p>
         <InputTag labelName="Full Name" />
@@ -19,7 +19,7 @@ const CheckoutForm = forwardRef(function ({ }, ref) {
             <InputTag labelName="Postel Code " />
             <InputTag labelName="City" />
         </div>
-        <button>submit</button>
+        {/* <button>submit</button> */}
     </form>
 })
 export default CheckoutForm

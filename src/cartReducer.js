@@ -26,5 +26,8 @@ export function cartReducer(cartState, action) {
         })
         return newCart;
     }
+    if(action.type=="emptyCart"){
+        return cartData=    []
+    }
     return cartState
 }

@@ -11,16 +11,19 @@ export default function PopUpData() {
             setPopUp("checkout")
         }else if(popUp==="checkout"){
             formData.current.submit();
+            formData.current.addEventListener("submit", (e)=>{
+                e.preventDefault()
+            })
             setPopUp("notification")
         }
     }
     return <PopUpCard handleCheckOut={handleCheckOut} setPopUp={setPopUp}>
+        {popUp === "cart" && <Cart />}
+        {popUp === "checkout" && <CheckoutForm ref={formData} />}
         {popUp === "notification" && <Notification status={"Success"}>
             <p>Your Order was sumitted successfully</p>
             <p>We will get back you with more details via email within the next few minutes</p>
         </Notification>}
-        {popUp === "cart" && <Cart />}
-        {popUp === "checkout" && <CheckoutForm ref={formData} />}
 
     </PopUpCard>
 }
