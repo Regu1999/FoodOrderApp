@@ -1,9 +1,9 @@
 import Navbar from "./component/Navbar";
 import Foods from "./component/shop/Foods"
-// import PopUpCard from "./component/UI/PopUpCard";
+import PopUpCard from "./component/UI/PopUpCard";
 // import Cart from "./component/cart/Cart";
 // import CheckoutForm from "./components/CheckoutForm";
-import PopUpData from "./component/PopupData";
+// import PopUpData from "./component/PopupData";
 import { getMealsData } from "./http";
 import { MealsContext } from "./component/store/mealContext";
 import { useState, useEffect, useReducer } from "react";
@@ -31,7 +31,7 @@ function App() {
   }
   return (
     <MealsContext.Provider value={mealContext}>
-      <PopUpData />
+      <PopUpCard />
       <Navbar />
       <Foods />
     </MealsContext.Provider>

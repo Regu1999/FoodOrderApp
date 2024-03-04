@@ -11,5 +11,7 @@ export const MealsContext=createContext({
 
 export const CartTotalCtx=createContext({
     total:null,
-    setTotal:()=>{}
+    setTotal:()=>{},
+    popUp:'',
+    setPopUp:()=>{}
 })

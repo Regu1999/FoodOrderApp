@@ -6,6 +6,7 @@ import { useState,useRef } from "react"
 export default function PopUpData() {
     const formData=useRef();
     const [popUp, setPopUp] = useState("cart")
+
     function handleCheckOut() {
         if (popUp==="cart") {
             setPopUp("checkout")
@@ -19,7 +20,7 @@ export default function PopUpData() {
     }
     return <PopUpCard handleCheckOut={handleCheckOut} setPopUp={setPopUp}>
         {popUp === "cart" && <Cart />}
-        {popUp === "checkout" && <CheckoutForm ref={formData} />}
+        {popUp === "checkout" && <CheckoutForm ref={formData} handleCheckOut={handleCheckOut} />}
         {popUp === "notification" && <Notification status={"Success"}>
             <p>Your Order was sumitted successfully</p>
             <p>We will get back you with more details via email within the next few minutes</p>

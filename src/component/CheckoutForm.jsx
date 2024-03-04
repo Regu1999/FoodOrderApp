@@ -1,25 +1,39 @@
-import { useContext, useRef, forwardRef } from "react"
+import { useContext, useRef, forwardRef, useEffect, useState } from "react"
 import InputTag from "./UI/Input"
 import { CartTotalCtx } from "./store/mealContext"
 import { numerToPriceConverter } from "../handlePrice"
-const CheckoutForm = forwardRef(function ({ }, ref) {
+import PopUpBtn from "./UI/PopUpBtn"
+const CheckoutForm =function ({ }) {
+    const fullName = useRef();
+    const eMail = useRef();
+    const street = useRef();
+    const postelCode = useRef();
+    const city = useRef();
+    const [isValid, setIsvalid]=useState(false);
+    let formData;
     // const formData=useRef();
     const { total } = useContext(CartTotalCtx);
     const handleSubmit = (e) => {
         e.preventDefault();
+        const formData=new FormData(e.target);
+        console.log(formData.entries());
+        for(const data of formData.entries()){
+            console.log(data[0],":", data[1] );
+        }
+        setIsvalid(true)
     }
     const convetedPrice = numerToPriceConverter(total);
-    return <form onSubmit={handleSubmit} ref={ref}>
+    return <form onSubmit={handleSubmit}>
         <h2>Checkout</h2>
         <p>Total Amount : {convetedPrice}</p>
-        <InputTag labelName="Full Name" />
-        <InputTag labelName="E-Mail Address" type="email" />
-        <InputTag labelName="Street" />
+        <InputTag ref={fullName} labelName="Full Name" />
+        <InputTag ref={eMail} labelName="E-Mail Address" type="email" />
+        <InputTag ref={street} labelName="Street" />
         <div className="control-row">
-            <InputTag labelName="Postel Code " />
-            <InputTag labelName="City" />
+            <InputTag ref={postelCode} labelName="Postel Code " />
+            <InputTag ref={city} labelName="City" />
         </div>
-        {/* <button>submit</button> */}
+        <PopUpBtn type="submit" btnStatus="false" isValidate={isValid} />
     </form>
-})
+}
 export default CheckoutForm
