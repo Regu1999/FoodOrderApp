@@ -262,10 +262,15 @@ h1 {
     transform: translateY(0);
   }
 }
-.error{
-  /* border-color:rgb(252, 73, 73); */
+
+.wasValidate input:invalid {
+  border-color:rgb(252, 73, 73);
   color: rgb(252, 73, 73);
 }
-.sucess{
-color: rgb(3, 80, 3);
+.error{
+  color: rgb(247, 55, 55);
+  display: none;
+}
+.wasValidate input:invalid~.error{
+  display: block;
 }

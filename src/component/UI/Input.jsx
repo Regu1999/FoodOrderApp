@@ -1,15 +1,19 @@
 import { forwardRef, useState } from "react"
-const InputTag = forwardRef(function ({ labelName = "empty", type = "text", isError, ...props }, ref) {
-    // let inputValue=useRef()
-    // console.log(labelName.replaceAll(" ",""));
-    // function handleInputVal(event){
-    //     inputValue.current.value
+const InputTag = forwardRef(function ({ labelName = "empty", type = "text", ...props }, ref) {
+    // const [inputVal, setInputVal]=useState("");
+    let isValid=true;
+    // // console.log(inputVal);
+    // function handleInputTag(event){
+    //     if (event.target.value=="") {
+    //         isValid=false;
+    //     }
+    //     isValid=true;
+    //     setInputVal(event.target.value)
     // }
-    // const 
     return <div className="control">
         <label htmlFor={labelName} className="control-row">{labelName}</label>
-        <input ref={ref} type={type} id={labelName} className="control-row " name={labelName.replaceAll(" ", "")} {...props} required />
-        {isError && <small className="error">This input is required</small>}
+        <input ref={ref} type={type} id={labelName}  className="control-row "  {...props} required />
+        <small className="error">This input is required</small>
     </div>
 })
 
