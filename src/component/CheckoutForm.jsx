@@ -28,7 +28,7 @@ const CheckoutForm = function () {
             productData
         }
         const postData=await sendOrderDara(order);
-        console.log(await postData.ok==true ? notification=true: setNotificationStatis(false));
+        console.log(await postData.ok==true ? setNotificationStatis=true: setNotificationStatis(false));
         setPopUp("notification")
         await postData.ok==true && addCartData({type:"emptyCart"})
     }
@@ -36,12 +36,12 @@ const CheckoutForm = function () {
     return <form onSubmit={handleSubmit} ref={formDataValidity} noValidate className={`${isError && "wasValidate"}`}>
         <h2>Checkout</h2>
         <p>Total Amount : {convetedPrice}</p>
-        <InputTag labelName="Full Name*" name="name" value="Regu"/>
-        <InputTag labelName="E-Mail Address*" type="email" name="email" value="Regu@aahasolutions.com" />
-        <InputTag labelName="Street*" name="street" value="dubai Kurukku santhu"/>
+        <InputTag labelName="Full Name*" name="name" />
+        <InputTag labelName="E-Mail Address*" type="email" name="email"/>
+        <InputTag labelName="Street*" name="street"/>
         <div className="control-row" >
-            <InputTag labelName="Postel Code* " name="postal-code" value="605009"/>
-            <InputTag labelName="City*" name="city" value="dubai" />
+            <InputTag labelName="Postel Code* " name="postal-code" />
+            <InputTag labelName="City*" name="city" />
         </div>
         <PopUpBtn type="submit" submitVal="Submit Order"  />
     </form>

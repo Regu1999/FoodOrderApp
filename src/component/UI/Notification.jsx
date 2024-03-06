@@ -1,9 +1,9 @@
 import PopUpBtn from "./PopUpBtn"
 import { CartTotalCtx } from "../store/mealContext"
 import { useContext } from "react"
-export default function Notification({ status, children }) {
-    const {notification } = useContext(CartTotalCtx)
-    if (!notification) {
+export default function Notification() {
+    const {notificationStatis } = useContext(CartTotalCtx)
+    if (!notificationStatis) {
         return <div>
         <h2>Error</h2>
         {/* {children} */}
