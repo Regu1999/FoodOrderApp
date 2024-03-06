@@ -6,7 +6,7 @@ export default function Food({ meal }) {
     const { id, name, price, description, image } = meal;
     const { addCartData} = useContext(MealsContext);
     const convetedPrice=numerToPriceConverter(price);
-    // console.log("hi");
+    // console.log("Food");
     return <div className="meal-item">
         <article>
             <img src={`http://localhost:3000/${image}`} alt={name} />

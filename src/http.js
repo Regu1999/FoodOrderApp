@@ -3,16 +3,15 @@ export async function getMealsData() {
         const res = await fetch("http://localhost:3000/meals");
         const resdata = await res.json();
         if (!res.ok) {
-            throw new Error("unable to fetch data")
+            throw new Error(res)
         }
-        return resdata
+        return {resdata, resStatus:res.ok}
     } catch (error) {
-        console.log(error);
+        return error;
     }
 }
 
 export async function sendOrderDara(order) {
-    console.log(order);
     try {
         const res = await fetch("http://localhost:3000/orders", {
             method: 'POST',
@@ -22,10 +21,10 @@ export async function sendOrderDara(order) {
             body: JSON.stringify({order})
         });
         if (!res.ok) {
-            throw new Error("Unable to Order fodd try again later")
+            throw new Error("Unable to Order Please try again later")
         }
-        return res.json()
+        return res
     } catch (error) {
-        console.log(error);
+        return error;
     }
 }

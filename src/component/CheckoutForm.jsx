@@ -7,10 +7,10 @@ import { sendOrderDara } from "../http"
 const CheckoutForm = function () {
     const formDataValidity = useRef();
     const { mealsCart,addCartData } = useContext(MealsContext)
-    const { total, setPopUp } = useContext(CartTotalCtx);
+    let { total, setPopUp,setNotificationStatis } = useContext(CartTotalCtx);
     const [isError, setIsError]=useState(false)
 
-    const handleSubmit = (e) => {
+     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!formDataValidity.current.checkValidity()) {
             setIsError(true);
@@ -27,22 +27,23 @@ const CheckoutForm = function () {
             customer,
             productData
         }
-        sendOrderDara(order)
-        addCartData({type:"emptyCart"})
+        const postData=await sendOrderDara(order);
+        console.log(await postData.ok==true ? notification=true: setNotificationStatis(false));
         setPopUp("notification")
+        await postData.ok==true && addCartData({type:"emptyCart"})
     }
     const convetedPrice = numerToPriceConverter(total);
     return <form onSubmit={handleSubmit} ref={formDataValidity} noValidate className={`${isError && "wasValidate"}`}>
         <h2>Checkout</h2>
         <p>Total Amount : {convetedPrice}</p>
-        <InputTag labelName="Full Name*" name="name" />
-        <InputTag labelName="E-Mail Address*" type="email" name="email" />
-        <InputTag labelName="Street*" name="street" />
+        <InputTag labelName="Full Name*" name="name" value="Regu"/>
+        <InputTag labelName="E-Mail Address*" type="email" name="email" value="Regu@aahasolutions.com" />
+        <InputTag labelName="Street*" name="street" value="dubai Kurukku santhu"/>
         <div className="control-row" >
-            <InputTag labelName="Postel Code* " name="postal-code" />
-            <InputTag labelName="City*" name="city" />
+            <InputTag labelName="Postel Code* " name="postal-code" value="605009"/>
+            <InputTag labelName="City*" name="city" value="dubai" />
         </div>
-        <PopUpBtn type="submit" submitVal="Submit Order" />
+        <PopUpBtn type="submit" submitVal="Submit Order"  />
     </form>
 }
 export default CheckoutForm

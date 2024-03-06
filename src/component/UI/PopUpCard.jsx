@@ -9,20 +9,24 @@ import { somePriceWithQty } from "../../handlePrice";
 export default function PopUpCard({ }) {
     const modelStatus = useRef();
     const { isModel, setIsModel,mealsCart } = useContext(MealsContext);
-    const [popUp, setPopUp] = useState("cart")
+    const [popUp, setPopUp] = useState("cart");
+    const [notificationStatis, setNotificationStatis]=useState(true)
 
     const [total, setTotal] = useState(0);
     const ctxVal = {
         total,
         setTotal,
         popUp,
-        setPopUp
+        setPopUp,
+        notificationStatis,
+        setNotificationStatis
     }
     useEffect(() => {
         if (isModel) {
             modelStatus.current.showModal()
         } else {
             setPopUp("cart")
+            setNotificationStatis(true)
             modelStatus.current.close()
         }
     }, [isModel])
@@ -40,10 +44,7 @@ export default function PopUpCard({ }) {
         <CartTotalCtx.Provider value={ctxVal}>
             {popUp === "cart" && <Cart />}
             {popUp === "checkout" && <CheckoutForm />}
-            {popUp === "notification" && <Notification status={"Success"}>
-                <p>Your Order was sumitted successfully</p>
-                <p>We will get back you with more details via email within the next few minutes</p>
-            </Notification>}
+            {popUp === "notification" && <Notification />}
         </CartTotalCtx.Provider>
     </dialog>, document.getElementById("modal"))
 }
