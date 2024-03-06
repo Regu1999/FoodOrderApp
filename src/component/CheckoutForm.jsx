@@ -18,7 +18,6 @@ const CheckoutForm = function () {
             return false
         }
         const formData = new FormData(e.target);
-        // formData.append("total", total)
         const customer = Object.fromEntries(formData.entries())
         const productData={
             productDetails:mealsCart,
@@ -28,8 +27,6 @@ const CheckoutForm = function () {
             customer,
             productData
         }
-        // dataObj.orderedProduct = mealsCart
-        // console.log(dataObj);
         sendOrderDara(order)
         addCartData({type:"emptyCart"})
         setPopUp("notification")
