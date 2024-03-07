@@ -26,6 +26,12 @@ export function cartReducer(cartState, action) {
         })
         return newCart;
     }
+    if (action.type == 'removeItem') {
+        const oldCartState=[...cartState]
+        const indexVal=oldCartState.findIndex((data)=>data.id==action.dispatch.id);
+        oldCartState.splice(indexVal,1)
+        return oldCartState;
+    }
     if(action.type=="emptyCart"){
         return []
     }

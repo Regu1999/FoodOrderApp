@@ -11,7 +11,7 @@ export default function CartList({ cartdata }) {
     // console.log(cartProduct);
     return <li className="cart-item"><span>{cartProduct[0].name} - {qty} x {convetedPrice}</span>
         <span className="cart-item-actions">
-            <button onClick={() => 1 < qty && addCartData({ type: 'decrement', dispatch: { id, qty: 1 } })}>-</button>
+            <button onClick={() => 1 < qty ? addCartData({ type: 'decrement', dispatch: { id, qty: 1 } }) : addCartData({ type: 'removeItem', dispatch: { id, qty: 1 } })}>-</button>
             {qty}
             <button onClick={() => addCartData({ type: 'increment', dispatch: { id, qty: 1 } })}>+</button>
         </span>
