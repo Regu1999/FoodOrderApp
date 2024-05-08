@@ -12,13 +12,13 @@ function App() {
   function updateSetMeals(data) {
     setMeals(data)
   }
-  const mealContext = {
-    mealsInfo: meals,
-    mealsCart: cart,
-    addCartData: cartDispatch,
-    isModel,
-    setIsModel
-  }
+  // const mealContext = {
+  //   mealsInfo: meals,
+  //   mealsCart: cart,
+  //   addCartData: cartDispatch,
+  //   isModel,
+  //   setIsModel
+  // }
   return (
     <MealsContext.Provider value={mealContext}>
       <PopUpCard />
